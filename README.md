@@ -3,4 +3,4 @@
 
 Example:
 
-![Uploading Zrzut ekranu 2025-04-16 o 15.20.30.png…]()
+https://github.com/Basgiga/Twitch_chat_sentiment_Analysis/tree/main/assets/example.png
