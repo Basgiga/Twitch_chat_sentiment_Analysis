@@ -3,4 +3,4 @@
 
 Example:
 
-![Example](example.png)
+![Example](Example.png)
