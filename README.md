@@ -3,4 +3,4 @@
 
 Example:
 
-https://github.com/Basgiga/Twitch_chat_sentiment_Analysis/tree/main/example.png
+![Example](example.png)
