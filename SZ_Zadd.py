@@ -18,46 +18,42 @@ nltk.downloader.download('vader_lexicon')
 app = Flask(__name__)
 
 # Twitch API
-CLIENT_ID = 'pprhpkltplru00vq7apogredlsqccb'
-CLIENT_SECRET = 'ipc2d565x5llt0io16b8s7ul87exp6'
+CLIENT_ID = '-'
+CLIENT_SECRET = '-'
 
 app.secret_key = 'your_secret_key'
 
 sentiment_counts = {
-    "Pozytywny": 0,
-    "Negatywny": 0,
-    "Neutralny": 0
+    "Positive": 0,
+    "Negative": 0,
+    "Neutral": 0
 }
 twitch_lexicon = {
-    "XD": "Pozytywny",
-    "LULW": "Pozytywny",
-    "LUL": "Pozytywny",
-    "OMEGALUL": "Pozytywny",
-    "KEKW": "Pozytywny",
-    ":(": "Negatywny",
-    "FeelsBadMan": "Negatywny",
-    "D:": "Negatywny",
-    "wtf": "Negatywny",
-    "lol": "Pozytywny",
-    "LOL": "Pozytywny",
-    "mhm": "Neutralny",
-    "yeah": "Pozytywny",
-    "Yeah": "Pozytywny",
-    "HUH": "Pozytywny",
-    "YEAH": "Pozytywny",
-    "yes": "Pozytywny",
-    "no": "Pozytywny",
-    "Sadge": "Negatywny",
-    "xdd": "Pozytywny"
+    "XD": "Positive",
+    "LULW": "Positive",
+    "LUL": "Positive",
+    "OMEGALUL": "Positive",
+    "KEKW": "Positive",
+    ":(": "Negative",
+    "FeelsBadMan": "Negative",
+    "D:": "Negative",
+    "wtf": "Negative",
+    "lol": "Positive",
+    "LOL": "Positive",
+    "mhm": "Neutral",
+    "yeah": "Positive",
+    "Yeah": "Positive",
+    "HUH": "Positive",
+    "YEAH": "Positive",
+    "yes": "Positive",
+    "no": "Positive",
+    "Sadge": "Negative",
+    "xdd": "Positive"
 }
 boty = ("moobot","nightbot","streamelements")
 dict_uzyt = {}
 
-"""
-skoncz te grafowanie
-dodaj wiecej informacji o samym streamerze, jakis opis moze, czy cos
 
-"""
 last_update_time = time.time()
 def create_graph_mentions():
     G = nx.DiGraph()
@@ -81,11 +77,11 @@ def analiza_sentymentu(text):
 
     sentiment_score = sia.polarity_scores(text)['compound']
     if sentiment_score > 0.1:
-        return "Pozytywny"
+        return "Positive"
     elif sentiment_score < -0.1:
-        return "Negatywny"
+        return "Negative"
     else:
-        return "Neutralny"
+        return "Neutral"
 """
 def analiza_sentymentu_pl(text):
     nlp = pipeline("sentiment-analysis", model="bardsai/twitter-sentiment-pl-base")
@@ -184,6 +180,3 @@ def update_sentiment():
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
-
-
-#DODAJ OPIS DO GRAFU
